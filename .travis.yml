@@ -8,6 +8,6 @@ script:
     (
       set -Eeuo pipefail
       set -x
-      docker build --tag danielwhatmuff/aspnetapp-travis-example:latest --file Dockerfile.windowsservercore-ltsc2016 .
+      docker build --no-cache --tag danielwhatmuff/aspnetapp-travis-example:latest --file Dockerfile.windowsservercore-ltsc2016 .
       docker run --name aspnet_sample --rm -it -p 8000:80 danielwhatmuff/aspnetapp-travis-example:latest --stop-timeout 5
     )
