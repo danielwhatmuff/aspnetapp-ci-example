@@ -8,5 +8,5 @@ build_script:
   - docker build --no-cache --tag danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest .
 
 deploy_script:
-  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS" danielwhatmuff.azurecr.io
+  - docker login -u=$DOCKER_USER -p=$DOCKER_PASS danielwhatmuff.azurecr.io
   - docker push danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest
