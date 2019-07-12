@@ -5,7 +5,8 @@ install:
   - docker version
 
 build_script:
-  - docker build --no-cache --tag danielwhatmuff/aspnetapp-travis-example:latest .
+  - docker build --no-cache --tag danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest .
 
-test_script:
-  - docker run --name aspnet_sample --rm -it -p 8000:80 danielwhatmuff/aspnetapp-travis-example:latest --stop-timeout 5
+deploy_script:
+  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS" danielwhatmuff.azurecr.io
+  - docker push danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest
