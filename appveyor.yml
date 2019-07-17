@@ -5,10 +5,15 @@ environment:
   GOPATH: c:\gopath
   KDVERSION: v1.12.1
   KUBECTLVERSION: v1.15.0
-  QUAY_USERNAME:
-    secure: oL1+uXJyvnV5e1qo7eCwzg==
+  KUBE_API_SERVER: https://dans-windo-dans-windows-res-29b451-546b22ca.hcp.uksouth.azmk8s.io
+  KUBE_NAMESPACE: default
+  QUAY_USERNAME: danielwhatmuff
   QUAY_PASSWORD:
     secure: ug1TEagcQtnqg1T6JLT1ug==
+  KUBE_CERT_DATA:
+    secure: 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
+  KUBE_TOKEN:
+    secure: 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
 
 stack: go 1.10
 
@@ -20,29 +25,23 @@ install:
   - curl -s -L -o https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
   - chmod +x kubectl.exe
   - kubectl.exe --version
+  - echo quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
 
+# - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
 build_script:
-  - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
+  - docker pull busybox
+  - docker tag busybox quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
   - docker tag quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_REPO_NAME%:latest
   - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
   - docker push quay.io/%APPVEYOR_REPO_NAME%:latest
 
-# deploy_script:
-#   - kubectl config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=$KUBE_API_SERVER
-#   - kubectl config set clusters.%APPVEYOR_ACCOUNT_NAME%.certificate-authority-data $KUBE_CERT_DATA
-#   - kubectl config set-credentials default --token=$KUBE_TOKEN
-#   - kubectl config set-context %APPVEYOR_ACCOUNT_NAME% --cluster=%APPVEYOR_ACCOUNT_NAME% --user=default
-#   - export QUAY_ORG=%APPVEYOR_ACCOUNT_NAME%
-#   - export QUAY_REPO=%APPVEYOR_PROJECT_NAME%
-#   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/deployment.yaml
-#   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/service.yaml
-
-#  KUBE_API_SERVER:
-#    secure: # https://ci.appveyor.com/tools/encrypt
-#  KUBE_CERT_DATA:
-#    secure: # https://ci.appveyor.com/tools/encrypt
-#  KUBE_TOKEN:
-#    secure: # https://ci.appveyor.com/tools/encrypt
-#  KUBE_NAMESPACE:
-#    secure: # https://ci.appveyor.com/tools/encrypt
+deploy_script:
+  - kubectl.exe config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=%KUBE_API_SERVER%
+  - kubectl.exe config set clusters.%APPVEYOR_ACCOUNT_NAME%.certificate-authority-data %KUBE_CERT_DATA%
+  - kubectl.exe config set-credentials default --token=%KUBE_TOKEN%
+  - kubectl.exe config set-context %APPVEYOR_ACCOUNT_NAME% --cluster=%APPVEYOR_ACCOUNT_NAME% --user=default
+  - export QUAY_ORG=%APPVEYOR_ACCOUNT_NAME%
+  - export QUAY_REPO=%APPVEYOR_PROJECT_NAME%
+  - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace %KUBE_NAMESPACE% -f kube/deployment.yaml
+  - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace %KUBE_NAMESPACE% -f kube/service.yaml
