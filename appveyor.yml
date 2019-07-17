@@ -13,10 +13,10 @@ install:
   - chmod +x kd.exe
   - kd.exe --help
 
-# build_script:
-#   - docker build -t quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% .
-#   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
-#   - docker tag quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_PROJECT_SLUG%:latest
+build_script:
+  - docker build -t quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% .
+  - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
+  - docker tag quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_PROJECT_SLUG%:latest
 #   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT%
 #   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:latest
 #
@@ -30,16 +30,16 @@ install:
 #   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/deployment.yaml
 #   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/service.yaml
 
-# environment:
-#   QUAY_USERNAME:
-#     secure: # https://ci.appveyor.com/tools/encrypt
-#   QUAY_PASSWORD:
-#     secure: # https://ci.appveyor.com/tools/encrypt
-#   KUBE_API_SERVER:
-#     secure: # https://ci.appveyor.com/tools/encrypt
-#   KUBE_CERT_DATA:
-#     secure: # https://ci.appveyor.com/tools/encrypt
-#   KUBE_TOKEN:
-#     secure: # https://ci.appveyor.com/tools/encrypt
-#   KUBE_NAMESPACE:
-#     secure: # https://ci.appveyor.com/tools/encrypt
+environment:
+  QUAY_USERNAME:
+    secure: oL1+uXJyvnV5e1qo7eCwzg==
+  QUAY_PASSWORD:
+    secure: ug1TEagcQtnqg1T6JLT1ug==
+#  KUBE_API_SERVER:
+#    secure: # https://ci.appveyor.com/tools/encrypt
+#  KUBE_CERT_DATA:
+#    secure: # https://ci.appveyor.com/tools/encrypt
+#  KUBE_TOKEN:
+#    secure: # https://ci.appveyor.com/tools/encrypt
+#  KUBE_NAMESPACE:
+#    secure: # https://ci.appveyor.com/tools/encrypt
