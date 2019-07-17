@@ -22,7 +22,7 @@ install:
   - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
   - chmod +x kd.exe
   - kd.exe --version
-  - curl -s -L -o https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
+  - curl -s -L -o kubectl.exe https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
   - chmod +x kubectl.exe
   - kubectl.exe --version
   - echo quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
