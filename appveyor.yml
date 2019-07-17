@@ -27,8 +27,8 @@ install:
 
 # - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
 build_script:
-  - docker pull busybox
-  - docker tag busybox quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
+  - docker pull mcr.microsoft.com/dotnet/framework/aspnet:4.8
+  - docker tag mcr.microsoft.com/dotnet/framework/aspnet:4.8 quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
   - docker tag quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_REPO_NAME%:latest
   - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
