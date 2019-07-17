@@ -24,7 +24,7 @@ install:
   - kd.exe --version
   - curl -s -L -o kubectl.exe https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
   - chmod +x kubectl.exe
-  - kubectl.exe --version
+  - kubectl.exe version
   - echo quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
 
 # - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
