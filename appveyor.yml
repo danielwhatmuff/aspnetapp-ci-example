@@ -11,7 +11,7 @@ install:
   - docker version
   - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
   - chmod +x kd.exe
-  - kd.exe
+  - kd.exe --help
 
 # build_script:
 #   - docker build -t quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% .
