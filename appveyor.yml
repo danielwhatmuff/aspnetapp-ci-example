@@ -4,6 +4,7 @@ image: Visual Studio 2017
 environment:
   GOPATH: c:\gopath
   KDVERSION: v1.12.1
+  KUBECTLVERSION: v1.15.0
   QUAY_USERNAME:
     secure: oL1+uXJyvnV5e1qo7eCwzg==
   QUAY_PASSWORD:
@@ -15,15 +16,18 @@ install:
   - docker version
   - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
   - chmod +x kd.exe
-  - printenv
+  - kd.exe --version
+  - curl -s -L -o https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
+  - chmod +x kubectl.exe
+  - kubectl.exe --version
 
 build_script:
   - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
   - docker tag quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_REPO_NAME%:latest
-#   - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
-#   - docker push quay.io/%APPVEYOR_REPO_NAME%:latest
-#
+  - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
+  - docker push quay.io/%APPVEYOR_REPO_NAME%:latest
+
 # deploy_script:
 #   - kubectl config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=$KUBE_API_SERVER
 #   - kubectl config set clusters.%APPVEYOR_ACCOUNT_NAME%.certificate-authority-data $KUBE_CERT_DATA
