@@ -15,14 +15,14 @@ install:
   - docker version
   - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
   - chmod +x kd.exe
-  - kd.exe --help
+  - printenv
 
 build_script:
-  - docker build -t quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% .
+  - docker build -t quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% .
   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
-  - docker tag quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_PROJECT_SLUG%:latest
-#   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT%
-#   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:latest
+  - docker tag quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_REPO_NAME%:latest
+#   - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
+#   - docker push quay.io/%APPVEYOR_REPO_NAME%:latest
 #
 # deploy_script:
 #   - kubectl config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=$KUBE_API_SERVER
