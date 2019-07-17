@@ -1,18 +1,45 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
+environment:
+  GOPATH: c:\gopath
+  KDVERSION: v1.12.1
+
+stack: go 1.10
+
 install:
   - docker version
+  - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
+  - chmod +x kd.exe
+  - kd.exe
 
-build_script:
-  - docker build --no-cache --tag danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest .
+# build_script:
+#   - docker build -t quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% .
+#   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
+#   - docker tag quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_PROJECT_SLUG%:latest
+#   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:%APPVEYOR_REPO_COMMIT%
+#   - docker push quay.io/%APPVEYOR_PROJECT_SLUG%:latest
+#
+# deploy_script:
+#   - kubectl config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=$KUBE_API_SERVER
+#   - kubectl config set clusters.%APPVEYOR_ACCOUNT_NAME%.certificate-authority-data $KUBE_CERT_DATA
+#   - kubectl config set-credentials default --token=$KUBE_TOKEN
+#   - kubectl config set-context %APPVEYOR_ACCOUNT_NAME% --cluster=%APPVEYOR_ACCOUNT_NAME% --user=default
+#   - export QUAY_ORG=%APPVEYOR_ACCOUNT_NAME%
+#   - export QUAY_REPO=%APPVEYOR_PROJECT_NAME%
+#   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/deployment.yaml
+#   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace $KUBE_NAMESPACE -f kube/service.yaml
 
-deploy_script:
-  - docker login -u=%DOCKER_USER% -p=%DOCKER_PASS% danielwhatmuff.azurecr.io
-  - docker push danielwhatmuff.azurecr.io/aspnetapp-travis-example:latest
-
-environment:
-  DOCKER_USER:
-    secure: oL1+uXJyvnV5e1qo7eCwzg==
-  DOCKER_PASS:
-    secure: oazr6UiEX9csdOFeZVPhWe7388uiLj1+zCaOcqdqmfEm26tPHza8JHSl8ZFAQKYc
+# environment:
+#   QUAY_USERNAME:
+#     secure: # https://ci.appveyor.com/tools/encrypt
+#   QUAY_PASSWORD:
+#     secure: # https://ci.appveyor.com/tools/encrypt
+#   KUBE_API_SERVER:
+#     secure: # https://ci.appveyor.com/tools/encrypt
+#   KUBE_CERT_DATA:
+#     secure: # https://ci.appveyor.com/tools/encrypt
+#   KUBE_TOKEN:
+#     secure: # https://ci.appveyor.com/tools/encrypt
+#   KUBE_NAMESPACE:
+#     secure: # https://ci.appveyor.com/tools/encrypt
