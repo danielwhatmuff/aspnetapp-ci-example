@@ -27,6 +27,8 @@ install:
   - chmod +x kd.exe
   - curl -s -L -o kubectl.exe https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
   - chmod +x kubectl.exe
+  - python --version
+  - pip install awscli
 
 build_script:
   - eval $(aws ecr get-login --region eu-west-2 --no-include-email --registry-ids 149353100611)
