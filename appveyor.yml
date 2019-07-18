@@ -31,7 +31,7 @@ install:
   - pip install awscli
 
 build_script:
-  - eval $(aws ecr get-login --region eu-west-2 --no-include-email --registry-ids 149353100611)
+  - ps: Invoke-Expression -Command (aws ecr get-login --region eu-west-2 --no-include-email --registry-ids 149353100611)
   - docker pull mcr.microsoft.com/dotnet/framework/samples:aspnetapp
   - docker tag mcr.microsoft.com/dotnet/framework/samples:aspnetapp 149353100611.dkr.ecr.eu-west-2.amazonaws.com/appvia-test/testing-windows-containers
   - docker --debug push 149353100611.dkr.ecr.eu-west-2.amazonaws.com/appvia-test/testing-windows-containers
