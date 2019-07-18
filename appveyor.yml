@@ -7,6 +7,9 @@ environment:
   KUBECTLVERSION: v1.15.0
   KUBE_API_SERVER: https://dans-windo-dans-windows-res-29b451-546b22ca.hcp.uksouth.azmk8s.io
   KUBE_NAMESPACE: default
+  AWS_ACCESS_KEY_ID: AKIASFRRDOVBYKZUOE7E
+  AWS_SECRET_ACCESS_KEY:
+    secure: fRolJ3WLY4TfPtOHRFuCTvm/0B/NohNxN/iCa8K9LxQ7BOno1tyf6JGEMn0wjC4B
   QUAY_USERNAME: danielwhatmuff
   QUAY_PASSWORD:
     secure: ug1TEagcQtnqg1T6JLT1ug==
@@ -26,12 +29,10 @@ install:
   - chmod +x kubectl.exe
 
 build_script:
+  - eval $(aws ecr get-login --region eu-west-2 --no-include-email --registry-ids 149353100611)
   - docker pull mcr.microsoft.com/dotnet/framework/samples:aspnetapp
-  - docker tag mcr.microsoft.com/dotnet/framework/samples:aspnetapp %APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
-  - docker login docker.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
-  - docker tag %APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% %APPVEYOR_REPO_NAME%:latest
-  - docker --debug push %APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
-  - docker --debug push %APPVEYOR_REPO_NAME%:latest
+  - docker tag mcr.microsoft.com/dotnet/framework/samples:aspnetapp 149353100611.dkr.ecr.eu-west-2.amazonaws.com/appvia-test/testing-windows-containers
+  - docker --debug push 149353100611.dkr.ecr.eu-west-2.amazonaws.com/appvia-test/testing-windows-containers
 
 deploy_script:
   - kubectl.exe config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=%KUBE_API_SERVER%
