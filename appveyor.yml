@@ -31,8 +31,8 @@ build_script:
   - docker tag mcr.microsoft.com/dotnet/framework/samples:aspnetapp quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
   - docker login quay.io --username %QUAY_USERNAME% --password %QUAY_PASSWORD%
   - docker tag quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT% quay.io/%APPVEYOR_REPO_NAME%:latest
-  - docker push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
-  - docker push quay.io/%APPVEYOR_REPO_NAME%:latest
+  - docker --debug push quay.io/%APPVEYOR_REPO_NAME%:%APPVEYOR_REPO_COMMIT%
+  - docker --debug push quay.io/%APPVEYOR_REPO_NAME%:latest
 
 deploy_script:
   - kubectl.exe config set-cluster %APPVEYOR_ACCOUNT_NAME% --server=%KUBE_API_SERVER%
