@@ -19,6 +19,7 @@ stack: go 1.10
 
 install:
   - docker version
+  - docker info
   - curl -s -L -o kd.exe https://github.com/UKHomeOffice/kd/releases/download/%KDVERSION%/kd_windows_amd64.exe
   - chmod +x kd.exe
   - curl -s -L -o kubectl.exe https://storage.googleapis.com/kubernetes-release/release/%KUBECTLVERSION%/bin/windows/amd64/kubectl.exe
