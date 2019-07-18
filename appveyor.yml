@@ -41,7 +41,7 @@ deploy_script:
   - kubectl.exe config set clusters.%APPVEYOR_ACCOUNT_NAME%.certificate-authority-data %KUBE_CERT_DATA%
   - kubectl.exe config set-credentials default --token=%KUBE_TOKEN%
   - kubectl.exe config set-context %APPVEYOR_ACCOUNT_NAME% --cluster=%APPVEYOR_ACCOUNT_NAME% --user=default
-  - export QUAY_ORG=%APPVEYOR_ACCOUNT_NAME%
-  - export QUAY_REPO=%APPVEYOR_PROJECT_NAME%
+  - cmd: set QUAY_ORG=%APPVEYOR_ACCOUNT_NAME%
+  - cmd: set QUAY_REPO=%APPVEYOR_PROJECT_NAME%
   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace %KUBE_NAMESPACE% -f kube/deployment.yaml
   - kd.exe --context %APPVEYOR_ACCOUNT_NAME% --namespace %KUBE_NAMESPACE% -f kube/service.yaml
